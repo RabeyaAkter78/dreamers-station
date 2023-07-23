@@ -3,6 +3,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 import emailjs from '@emailjs/browser';
 import conatactImg from '../../assets/images/contact.png'
+import SectionTitle from "../SectionTitle/SectionTitle";
 const Contact = () => {
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
@@ -11,7 +12,7 @@ const Contact = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_ledbr2k','template_4p7z78v', form.current, 'YfYwkP5jqA14U7iM5')
+        emailjs.sendForm('service_ledbr2k', 'template_4p7z78v', form.current, 'YfYwkP5jqA14U7iM5')
             .then((result) => {
                 console.log(result.text);
                 setIsFormSubmitted(true);
@@ -25,6 +26,10 @@ const Contact = () => {
     return (
         <section>
             <div className="w-full">
+                <SectionTitle
+                    heading={"Contact us"}
+                    subHeading={"Feel free to reach out to us with any questions, inquiries, or to schedule a visit. We would love to hear from you!"}
+                ></SectionTitle>
                 <div data-aos="fade-up"
                     data-aos-delay="50"
                     data-aos-duration="1000"
