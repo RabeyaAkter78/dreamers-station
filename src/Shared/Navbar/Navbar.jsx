@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from '../../../src/assets/images/logo.png'
 import './Navbar.css'
 import { AuthContext } from "../../Providers/AuthProviders";
+import Search from "./Search";
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : "light");
@@ -27,9 +28,9 @@ const Navbar = () => {
 
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/instructors">Colleges</Link></li>
-        <li><Link to="/classes">Admission</Link></li>
-        <li><Link to="/classes">My College</Link></li>
+        <li><Link to="/colleges">Colleges</Link></li>
+        <li><Link to="/admission">Admission</Link></li>
+        <li><Link to="/myCollege">My College</Link></li>
 
 
         <li>
@@ -102,9 +103,9 @@ const Navbar = () => {
 
 
                 </div>
-
-
             </div>
+            <Search></Search>
+
         </>
     );
 };

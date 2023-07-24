@@ -4,6 +4,9 @@ import Main from '../Layouts/Main';
 import Home from '../Component/Home/Home';
 import Login from '../Component/Login/Login';
 import Register from '../Component/Register/Register';
+import Admission from '../Component/Admission/Admission';
+import College from '../Component/College/College';
+import MyCollege from '../Component/MyCollege/MyCollege';
 
 
 const router = createBrowserRouter([
@@ -23,6 +26,18 @@ const router = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>
             },
+            {
+                path:'/admission',
+                element:<Admission></Admission>
+            },
+            {
+                path:'/colleges',
+                element:<College></College>
+            },
+            {
+                path:'/myCollege',
+                element:<MyCollege></MyCollege>
+            }
         ],
 
 
