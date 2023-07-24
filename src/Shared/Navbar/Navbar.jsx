@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../../../src/assets/images/logo.png'
 import './Navbar.css'
+import { AuthContext } from "../../Providers/AuthProviders";
 const Navbar = () => {
-
+    const { user, logout } = useContext(AuthContext)
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : "light");
 
     useEffect(() => {
@@ -29,9 +30,7 @@ const Navbar = () => {
         <li><Link to="/instructors">Colleges</Link></li>
         <li><Link to="/classes">Admission</Link></li>
         <li><Link to="/classes">My College</Link></li>
-        {/* {user &&
-            <li><Link to="/dashboard">DASHBOARD <span className="text-red-400">{selecteddatas?.length || 0}</span> </Link></li>
-        } */}
+
 
         <li>
             <label className="swap swap-rotate ml-4 mt-2 h-[15px] w-[15px]">
@@ -51,7 +50,13 @@ const Navbar = () => {
         </li>
 
     </>
-
+    const handleLogout = () => {
+        logout()
+            .then()
+            .catch(error => {
+                console.log(error);
+            })
+    };
     return (
         <>
             <div className="navbar font-serif  
@@ -67,9 +72,9 @@ const Navbar = () => {
                     </div>
 
                     < >
-                        <img className="rounded-full h-14 w-14"  src={logo} alt="" />
+                        <img className="rounded-full h-14 w-14" src={logo} alt="" />
                         {/* <img src="https://ibb.co/nC9kG08" alt="" /> */}
-                        
+
 
                     </>
                 </div>
@@ -78,18 +83,27 @@ const Navbar = () => {
                         {navOptions}
                     </ul>
                 </div>
-                {/* <div className="navbar-end text-white mt-4">
+
+
+
+                <div className="navbar-end text-white mt-4">
+
                     <div className="tooltip" data-tip={user?.displayName}>
                         {user && <img className="rounded-full mr-4" style={{ height: '50px' }} src={user?.photoURL} />
                         }
                     </div>
 
-                    {user ?
-                        <button onClick={handleLogOut} className="btn">LogOut</button>
+
+                    {user ? <button onClick={handleLogout} className="btn btn-primary" >logOut</button>
                         :
-                        <Link to='/login' className="btn">Login</Link>
-                    }
-                </div> */}
+                        <Link to='/login'>
+                            <button className="btn btn-primary">Login</button>
+                        </Link>}
+
+
+                </div>
+
+
             </div>
         </>
     );
